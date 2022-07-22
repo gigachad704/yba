@@ -152,14 +152,20 @@ tab:Button("Arcade roll", "Using arcade.", function()
 	["Dialogue"] = "Dialogue1"
 })
 end) 
-tab:Button("Sell handle item", "Sells equiped item.", function()
+tab:Button("Sell one handle item", "Sells equiped item.", function()
    game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
 	["NPC"] = "Merchant", 
 	["Option"] = "Option1", 
 	["Dialogue"] = "Dialogue5"
 })
 end)
-
+tab:Button("Sell all handle item", "Sells equiped item.", function()
+   game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
+	["NPC"] = "Merchant", 
+	["Option"] = "Option2", 
+	["Dialogue"] = "Dialogue5"
+})
+end)
 local tab = win:Tab("Item using", "http://www.roblox.com/asset/?id=6023426915")
 
  tab:Button("Use Rokakaka", "Using Roka", function ()
@@ -242,7 +248,14 @@ game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue",
 })
 
 
-     end)
+ end)
+ tab:Button("Buy requiem arrow", "", function ()
+game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
+	["NPC"] = "Isabelle the Arrowsmith", 
+	["Option"] = "Option1", 
+	["Dialogue"] = "Dialogue4"
+})
+end)
 local tab = win:Tab("Telepots", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Arcade", "Teleport.", function()
    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new (301.839508, 0.381902546, -257.743652, -0.0336270966, -1.60877462e-08, -0.999434471, 3.67901798e-08, 1, -1.73346972e-08, 0.999434471, -3.73522901e-08, -0.0336270966)  
@@ -314,6 +327,8 @@ tab:Button("The tallest peak", "Teleport.", function()
                                           v:FindFirstChildOfClass(getgenv().Item).CFrame * CFrame.new(0, 5, 0)
                                           task.wait(.3)
                                           fireclickdetector(v:FindFirstChildOfClass("ClickDetector"))
+                                          wait(0.5)
+                                          v:Destroy()
                                           if string.match(lp.PlayerGui.Message.TextLabel.Text, "You can't have more than") then
                                     v:Destroy();
                                 end
@@ -326,3 +341,4 @@ tab:Button("The tallest peak", "Teleport.", function()
               end
           end
       )
+     
