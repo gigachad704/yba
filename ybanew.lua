@@ -77,6 +77,12 @@ end
 end)
 end
 end)
+tab:Button("InfPilot Range", "", function() -- Description is the text you'll see when you click on the arrow at the right of the button
+while wait(1) do pcall(function()
+    game:GetService("Workspace").Living.LocalPlayer.Character.StandMorph.IsPiloting.Value = 999999
+end)
+end
+end)
 tab:Line()
 tab:Label("SBR")
 tab:Line()
@@ -108,26 +114,17 @@ if HoldingControl then
 Player.Character:MoveTo(Mouse.Hit.p)
 end
 end)
- tab:Button("CTRL + click = tp", "Telepots you at coursor.", function()
-UserInputService.InputBegan:connect(function(Input, Processed)
-if Input.UserInputType == Enum.UserInputType.Keyboard then
-if Input.KeyCode == Enum.KeyCode.LeftControl then
-HoldingControl = true
-elseif Input.KeyCode == Enum.KeyCode.RightControl then
-HoldingControl = true
-end
-end
+ tab:Button("Click TP tool", "Telepots you at coursor.", function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "click to TP"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 end)
- 
-UserInputService.InputEnded:connect(function(Input, Processed)
-if Input.UserInputType == Enum.UserInputType.Keyboard then
-if Input.KeyCode == Enum.KeyCode.LeftControl then
-HoldingControl = false
-elseif Input.KeyCode == Enum.KeyCode.RightControl then
-HoldingControl = false
-end
-end
-end)
+tool.Parent = game.Players.LocalPlayer.Backpack
 end)
  tab:Button("COMPETITIVE SBR", "Show serverlist.", function()
 game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
@@ -136,7 +133,7 @@ game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
 	["Dialogue"] = "Dialogue2"
 })
 end)
- tab:Button("COMPETITIVE SBR", "Show serverlist.", function()
+ tab:Button("CASUAL SBR", "Show serverlist.", function()
     game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
 	["NPC"] = "Metal Ball Run", 
 	["Option"] = "Option1", 
@@ -344,4 +341,7 @@ tab:Button("The tallest peak", "Teleport.", function()
               end
           end
       )
-     
+     local tab = win:Tab("UI Settings", "http://www.roblox.com/asset/?id=6023426915") -- Logo is the link
+tab:Button("Destroy GUI", "", function() -- Description is the text you'll see when you click on the arrow at the right of the button
+game:GetService("CoreGui").FluxLib:Destroy()
+end)
