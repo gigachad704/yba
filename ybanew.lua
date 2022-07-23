@@ -36,11 +36,11 @@ local ItemTab = win:Tab("Farm","http://www.roblox.com/asset/?id=6023426915")
 tab:Line()
 tab:Label("Misc")
 tab:Line()
-tab:Button("Godmode", "Poison godmode for any stand!", function()
+tab:Toggle("Godmode", "Poison godmode any stand", false, function(t) -- t can be anything, choose false or true for what is the value in default
 game:GetService("ReplicatedStorage").Sounds.Poisoned.Volume = 0
     local Func = game.Players.LocalPlayer.Character.RemoteFunction
 
-getgenv().toggle = true
+getgenv().toggle = t
 
 while getgenv().toggle do wait()
 Func:InvokeServer("Poison", {
