@@ -257,6 +257,9 @@ game.Players.LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
 })
 end)
 local tab = win:Tab("Telepots", "http://www.roblox.com/asset/?id=6023426915")
+tab:Textbox("Tp to player(Full name)", "Description", true, function(t) -- true or false to toggle if the text disappears after typing in
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Living[t].HumanoidRootPart.CFrame
+    end)
 tab:Button("Arcade", "Teleport.", function()
    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new (301.839508, 0.381902546, -257.743652, -0.0336270966, -1.60877462e-08, -0.999434471, 3.67901798e-08, 1, -1.73346972e-08, 0.999434471, -3.73522901e-08, -0.0336270966)  
  end)
