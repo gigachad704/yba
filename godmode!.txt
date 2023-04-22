@@ -1,0 +1,13 @@
+wait(15)
+while true do
+    wait()
+local args = {
+    [1] = "Bleed",
+    [2] = {
+        ["TotalDamage"] = 1,
+        ["Duration"] = -0
+    }
+}
+
+game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+end
